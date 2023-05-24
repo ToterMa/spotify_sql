@@ -1,0 +1,88 @@
+--CREATE TABLE musicas
+
+
+CREATE TABLE musicas (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nome_genero TEXT NOT NULL,
+  nome_cancao TEXT NOT NULL,
+  artista TEXT NOT NULL,
+  duracao_m TIME,
+  album TEXT NOT NULL
+  );
+  
+  --CREATE TABLE podcast
+  
+CREATE TABLE podcast (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  episodios INTEGER,
+  duracao_podc TIME,
+  tipo_de_podc TEXT NOT NULL,
+  data_rep DATETIME NOT NULL
+  );
+  
+  --CREATE TABLE playlist
+
+CREATE TABLE playlist (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+    musica_id FORANGE KEY, 
+    podcast_id FORANGE KEY
+);
+    
+    INSERT INTO musicas ( nome_genero, nome_cancao,artista, duracao_m , album)
+    VALUES
+    ( " musicas em espanhol","me voy", "julieta venegas", "3:07","limon y sal"),
+    ( " musicas em espanhol","colgando en tus manos", "carlos baute marta sanchez", "3:50","de mi puno y letra edicion colecionista"),
+    ( "musicas em espanhol","oye mi amor", "mana", "4:23","donde jugaran los ninos" ),
+    ( "musicas em espanhol","asi es la vida", "elefante", "5:10","el que busca encuentra" ),
+    ( "musicas em espanhol","rosas", "la oreja de van gogh", "3:56","lo que te conte mientras te hacias la dormida" );
+    
+    
+
+ INSERT INTO podcast ( episodios,duracao_podc, tipo_de_podc, data_rep)
+    VALUES
+    ( "episodio22 los sustantivos con dos generos","00:26:40", "educacion 5.0","12 de fev"),
+   ( "episodio21 lo vida es tiempo","00:26:40", "educacion 5.0","2 de jan"),
+    ( "episodio20 dicas verbos hacer hablar gustar","00:36:04", "educacion 5.0","out 2022 "),
+   ( "episodio19","00:28:43", "educacion 5.0","out 2022"),
+   ( "episodio18 sea genuino","completo", "educacion 5.0","out 2022" ),
+   ("episodio los rostros del miedo en el cine de horror","00:23:59","enigmas sin resolver","3 de marzo"),
+   ("episodio2 etiqueta digital con thais heredia","00:20:54","prazer karnal","out de 2019");
+ 
+
+
+INSERT INTO playlist (  musica_id, podcast_id)
+    VALUES
+    ("musica en espanol","educacion 5.0"),
+    ("Yandel","enigmas sin resolver"), 
+    ("Mix de Vander Lee","Prazer Karnal");
+    
+
+##CONSULTAS
+
+--https://open.spotify.com/?nd=1
+-- aqui temos o endereço de Spotify  de onde tirei --os dados de meu banco de dados.
+
+--Consulta total de dados das musicas
+
+SELECT *
+FROM musicas;
+
+
+--Consulta total de dados dos podcast
+
+SELECT *
+FROM podcast;
+
+
+--Consulta total de dados das playlist
+
+SELECT *
+FROM playlist;
+
+--Consulta TABELA musicas INNER JOIN ON  playlist
+
+SELECT *
+FROM musicas
+INNER JOIN playlist
+ON musicas.id= playlist.id;
+
